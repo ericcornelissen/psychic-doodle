@@ -1,0 +1,72 @@
+{
+  "name": "psychic-doodle",
+  "version": "0.1.0",
+  "description": "Lightweight JavaScript code processor",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib.d.ts",
+      "import": "./lib.js"
+    }
+  },
+  "engines": {
+    "node": "^24 || ^26"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericcornelissen/psychic-doodle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ericcornelissen/psychic-doodle/issues"
+  },
+  "author": {
+    "name": "Eric Cornelissen",
+    "email": "ericornelissen@gmail.com",
+    "url": "https://ericcornelissen.dev/"
+  },
+  "keywords": [
+    "code",
+    "javascript",
+    "lightweight",
+    "processor"
+  ],
+  "files": [
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "lib.js",
+    "lib.d.ts",
+    "main.js",
+    "package.json"
+  ],
+  "devDependencies": {
+    "@ericcornelissen/arbitrary-javascript": "0.3.1",
+    "@stryker-mutator/api": "10.0.0",
+    "@stryker-mutator/core": "10.0.0",
+    "@stryker-mutator/tap-runner": "10.0.0",
+    "eslint": "10.10.0",
+    "eslint-node-test": "0.4.0",
+    "eslint-plugin-regexp": "3.3.0",
+    "fast-check": "4.10.0",
+    "licensee": "12.0.2",
+    "npm-run-all2": "9.0.3",
+    "prettier": "3.9.6",
+    "strip-assertions": "1.0.5",
+    "strip-comments-js": "1.4.0"
+  },
+  "scripts": {
+    "_prettier": "prettier '**/*.{js,md,ts,yml}'",
+    "check": "npm-run-all check:*",
+    "check:config": "node script/check-eslint-rules.js",
+    "check:format": "npm run _prettier -- --check",
+    "check:js": "eslint --config .eslint.js \"*.js\"",
+    "check:licenses": "licensee --errors-only",
+    "clean": "git clean -fx .cache/ node_modules/ *.html",
+    "format": "npm run _prettier -- --write",
+    "package": "strip-assertions ./main.js && strip-comments-js ./main.js",
+    "test": "node --test 'main.test.js'",
+    "mutation": "stryker run .stryker.js",
+    "verify": "npm run check && npm run test"
+  }
+}

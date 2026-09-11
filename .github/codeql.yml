@@ -1,0 +1,10 @@
+# Configuration file for CodeQL (https://codeql.github.com/)
+
+name: psychic-doodle CodeQL config
+
+packs:
+  - githubsecuritylab/codeql-javascript-libs@0.7.7
+  - githubsecuritylab/codeql-javascript-queries@0.7.7
+
+queries:
+  - uses: security-extended
