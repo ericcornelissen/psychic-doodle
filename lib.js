@@ -6,6 +6,7 @@ import { process as p } from "./main.js";
  * @typedef Hooks
  * @property {(comment: string) => string} [blockComment] A handler for block comments.
  * @property {(comment: string) => string} [lineComment] A handler for line comments.
+ * @property {(statement: string) => string} [statement] A handler for statements.
  */
 
 /**
@@ -22,6 +23,7 @@ export function process(code, hooks) {
 	const h = { ...hooks };
 	h.blockComment ??= identity;
 	h.lineComment ??= identity;
+	h.statement ??= identity;
 	return p(code, h);
 }
 

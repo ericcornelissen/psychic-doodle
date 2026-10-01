@@ -4,3 +4,4 @@
 node_modules/
 mutation.html
 npm-debug.log*
+*.cpuprofile
